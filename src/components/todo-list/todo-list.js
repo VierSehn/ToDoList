@@ -5,7 +5,7 @@ import "./todo-list.css"
 
 const TodoList = ({ todos, onDeleted,
                     onToggleImportant,
-                    onToggleDone }) => {
+                    onToggleDone, onVisible }) => {
 
   const elements = todos.map((item) => {
 
