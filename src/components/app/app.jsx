@@ -18,7 +18,8 @@ export default class App extends React.Component {
       this.createTodoItem('Make Awesome App'),
       this.createTodoItem('Have a lunch')
     ],
-    searchItem: ""
+    searchItem: "",
+    buttonFilter: "active"
   }
 
   createTodoItem(label) {
@@ -67,6 +68,19 @@ export default class App extends React.Component {
     return array.filter((element) => element.label.includes(searchItem))
   }
 
+  statusFilter = (array, buttonFilter) => {
+    if(buttonFilter === "all") {
+      return array
+    }
+    else if(buttonFilter === "active") {
+      return array.filter((element) => !element.done)
+    }
+    else if(buttonFilter === "done") {
+      return array.filter((element) => element.done)
+    }
+    else return array
+  }
+
   toggleProperty(arr, id, propName) {
       const idx = arr.findIndex((el) => el.id === id)
 
@@ -102,6 +116,10 @@ export default class App extends React.Component {
     this.setState({searchItem: value})
   }
 
+  onButtonFiltred = (value) => {
+    this.setState({buttonFilter: value})
+  }
+
   render() {
 
     const doneCount = this.state.todoData
@@ -114,11 +132,12 @@ export default class App extends React.Component {
       <AppHeader toDo={todoCount} done={doneCount} />
       <div className="top-panel d-flex">
         <SearchPanel onItemSearched={this.onItemSearched}/>
-        <ItemStatusFilter />
+        <ItemStatusFilter buttonFilter={this.state.buttonFilter}
+                          onButtonFiltred={this.onButtonFiltred} />
       </div>
 
       <TodoList 
-      todos={this.itemFilter(this.state.todoData, this.state.searchItem)}
+      todos={this.statusFilter(this.itemFilter(this.state.todoData, this.state.searchItem), this.state.buttonFilter)}
       onDeleted={ this.deleteItem } 
       onToggleImportant={this.onToggleImportant}
       onToggleDone={this.onToggleDone} />
