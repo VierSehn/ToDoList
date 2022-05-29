@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react"
 
-import './todo-list-item.css'
+import "./todo-list-item.css"
 
 export default class TodoListItem extends React.Component {
 
@@ -12,11 +12,11 @@ export default class TodoListItem extends React.Component {
 
     let classNames = "todo-list-item"
     if(done) {
-      classNames += ' done'
+      classNames += " done"
     }
   
     if(important) {
-      classNames += ' important'
+      classNames += " important"
     }
 
     return (

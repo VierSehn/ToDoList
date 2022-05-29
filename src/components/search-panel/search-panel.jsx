@@ -1,11 +1,8 @@
-import React from 'react'
+import React from "react"
 
-import './search-panel.css'
+import "./search-panel.css"
 
 export default class SearchPanel extends React.Component {
-  state = {
-    label: ""
-  }
 
   onLabelChange = (event) => {
     this.setState({label: event.target.value})
@@ -17,7 +14,6 @@ export default class SearchPanel extends React.Component {
       <input type="text"
         className="form-control search-input"
         placeholder="type to search"
-        value={this.state.label}
         onChange={this.onLabelChange} />
     )
   }

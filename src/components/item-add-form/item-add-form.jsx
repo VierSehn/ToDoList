@@ -1,11 +1,11 @@
-import React from 'react'
+import React from "react"
 
-import './item-add-form.css'
+import "./item-add-form.css"
 
 export default class ItemAddForm extends React.Component {
   
   state = {
-    label: ''
+    label: ""
   }
 
   onLabelChange = (e) => {
@@ -18,7 +18,7 @@ export default class ItemAddForm extends React.Component {
     e.preventDefault();
     this.props.onItemAdded(this.state.label)
     this.setState({
-      label: ''
+      label: ""
     })
   }
 
@@ -27,12 +27,12 @@ export default class ItemAddForm extends React.Component {
       <form className="item-add-form d-flex"
             onSubmit={this.onSubmit}>
         <input type="text"
-               className='form-control'
+               className="form-control"
                onChange={this.onLabelChange}
-               placeholder='What needs to be done'
+               placeholder="What needs to be done"
                value={this.state.label} />
         <button 
-          className='btn btn-outline-secondary'>
+          className="btn btn-outline-secondary">
           Add Item
         </button>
       </form>

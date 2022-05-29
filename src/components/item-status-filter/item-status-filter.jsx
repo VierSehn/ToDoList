@@ -1,13 +1,13 @@
-import React from 'react'
+import React from "react"
 
-import './item-status-filter.css'
+import "./item-status-filter.css"
 
 export default class ItemStatusFilter extends React.Component {
 
   buttons =  [
-    {key: 'all', label: 'All' },
-    {key: 'active', label: 'Active' },
-    {key: 'done', label: 'Done' }
+    {key: "all", label: "All" },
+    {key: "active", label: "Active" },
+    {key: "done", label: "Done" }
   ]
 
   render() {
@@ -20,7 +20,7 @@ export default class ItemStatusFilter extends React.Component {
         <button type="button"
           className= { `btn ${active}`}
           key={key} 
-          onClick={() => this.props.onButtonFiltred(key)} >
+          onClick={() => this.props.onItemsFiltred(key)} >
             {label}
         </button>
       )
