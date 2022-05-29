@@ -20,7 +20,7 @@ export default class ItemStatusFilter extends React.Component {
         <button type="button"
           className= { `btn ${active}`}
           key={key} 
-          onClick={() => this.props.onItemsFiltred(key)} >
+          onClick={() => this.props.onItemsFiltered(key)} >
             {label}
         </button>
       )

@@ -32,18 +32,9 @@ export default class App extends React.Component {
   }
 
   deleteItem = (id) => {
-    
     this.setState(({ todoData }) => {
-
-      const idx = todoData.findIndex((el) => el.id === id)
-
-      const newArray = [
-        ...todoData.slice(0, idx), 
-        ...todoData.slice(idx + 1)
-      ]
-
       return {
-        todoData: newArray
+        todoData: todoData.filter(el => el.id !== id)
       }
     })
   }
@@ -70,12 +61,12 @@ export default class App extends React.Component {
 
   statusFilter = (array, buttonFilter) => {
     switch(buttonFilter){
-      default:
-        return array
       case "active":
         return array.filter((element) => !element.done)
       case "done":
         return array.filter((element) => element.done)
+      default:
+        return array
     }
   }
 
@@ -103,7 +94,7 @@ export default class App extends React.Component {
     this.setState({searchItem: value})
   }
 
-  onItemsFiltred = (value) => {
+  onItemsFiltered = (value) => {
     this.setState({buttonFilter: value})
   }
 
@@ -120,7 +111,7 @@ export default class App extends React.Component {
         <SearchPanel onItemSearched={this.onItemSearched}/>
         <ItemStatusFilter 
           buttonFilter={this.state.buttonFilter}
-          onItemsFiltred={this.onItemsFiltred} 
+          onItemsFiltered={this.onItemsFiltered} 
           />
       </div>
         <TodoList 
