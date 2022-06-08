@@ -49,7 +49,7 @@ export default class App extends React.Component {
   };
 
   itemFilter = (array, searchItem) => {
-    const re = new RegExp(searchItem.toLowerCase());
+    const re = new RegExp(searchItem);
 
     if (searchItem === "") {
       return array;
