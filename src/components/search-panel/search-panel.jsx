@@ -4,7 +4,7 @@ import "./search-panel.css";
 
 export default class SearchPanel extends React.Component {
   onLabelChange = (event) => {
-    this.props.onItemSearched(event.target.value);
+    this.props.onItemSearched(event.target.value.toLowerCase());
   };
 
   render() {

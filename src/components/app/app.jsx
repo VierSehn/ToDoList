@@ -5,12 +5,11 @@ import SearchPanel from "../search-panel";
 import TodoList from "../todo-list";
 import ItemStatusFilter from "../item-status-filter";
 import ItemAddForm from "../item-add-form";
+import { v4 as id } from "uuid";
 
 import "./app.css";
 
 export default class App extends React.Component {
-  maxId = 100;
-
   state = {
     todoData: [
       this.createTodoItem("Drink Coffee"),
@@ -26,7 +25,7 @@ export default class App extends React.Component {
       label,
       important: false,
       done: false,
-      id: this.maxId++,
+      id: id(),
     };
   }
 
@@ -52,7 +51,10 @@ export default class App extends React.Component {
     if (searchItem === "") {
       return array;
     }
-    return array.filter((element) => element.label.includes(searchItem));
+    return array.filter((element) => {
+      const smallLabel = element.label.toLowerCase();
+      return smallLabel.includes(searchItem);
+    });
   };
 
   statusFilter = (array, buttonFilter) => {
