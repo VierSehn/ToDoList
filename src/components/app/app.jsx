@@ -15,6 +15,7 @@ export default class App extends React.Component {
       this.createTodoItem("Drink Coffee"),
       this.createTodoItem("Make Awesome App"),
       this.createTodoItem("Have a lunch"),
+      this.createTodoItem("Have a breakfast"),
     ],
     searchItem: "",
     buttonFilter: "active",
@@ -48,12 +49,15 @@ export default class App extends React.Component {
   };
 
   itemFilter = (array, searchItem) => {
+    const re = new RegExp(searchItem.toLowerCase());
+
     if (searchItem === "") {
       return array;
     }
     return array.filter((element) => {
       const smallLabel = element.label.toLowerCase();
-      return smallLabel.includes(searchItem);
+      //return smallLabel.includes(searchItem);
+      return smallLabel.match(re);
     });
   };
 
